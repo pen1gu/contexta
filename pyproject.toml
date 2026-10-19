@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "contexta"
+version = "0.1.0"
+description = "내 구글 드라이브 폴더에서 얼굴을 찾는 로컬 데모"
+authors = ["Contexta"]
+readme = "README.md"
+packages = [{include = "contexta", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = ">=1.39"
+deepface = ">=0.0.96"
+google-api-python-client = ">=2.140.0"
+google-auth-oauthlib = ">=1.2.0"
+google-auth-httplib2 = ">=0.2.0"
+Pillow = ">=10.4.0"
+insightface = ">=0.7.3"
+onnxruntime = ">=1.19.0"
+requests = ">=2.32.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
