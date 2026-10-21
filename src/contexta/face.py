@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 MODEL_NAME = "Buffalo_L"
 DETECTOR_BACKEND = "yunet"
+YUNET_SCORE_THRESHOLD = 0.8
 DISTANCE_METRIC = "cosine"
 FALLBACK_COSINE_THRESHOLD = 0.55
 
@@ -136,6 +137,7 @@ def _represent(image_bytes: bytes) -> list[dict]:
     image = _decode_bgr(image_bytes)
     os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
     _patch_deepface_logger()
+    os.environ["yunet_score_threshold"] = str(YUNET_SCORE_THRESHOLD)
     from deepface import DeepFace
 
     try:
